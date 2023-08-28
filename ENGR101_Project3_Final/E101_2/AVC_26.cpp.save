@@ -1,0 +1,92 @@
+#include <iostream>
+#include "E101.h"
+
+using namespace std;
+
+
+void motors(int v_left,int v_right){
+	set_motors(5, v_left);
+	set_motors(1, v_right);
+	hardware_exchange();
+}
+
+void q1()
+{
+	cout<<"Quadrant 1 chosen"<<endl;
+	char server_addr[15] = {'1', '3', '0', '.', '1', '9', '5', '.', '3', '.', '9', '1'};
+	int port = 1024;
+	connect_to_server(server_addr, port);
+	char please[24] = {'P','l','e','a','s','e'};
+	send_to_server(please);
+	char password[24];
+	receive_from_server(password);
+	send_to_server(password);
+}
+
+void q2()
+{
+	cout<<"Quadrant 2 chosen"<<endl;
+	int count = 0;
+	while(count < 500)
+	{	
+		take_picture();
+		update_screen();	
+		int row = 120;
+		double error=0;
+		for(int col=0; col < 320; col++) {
+			int lum = (int)get_pixel(row, col, 3);
+			error = error + (lum<100)*(col-160);
+		}
+		cout<<endl;
+		cout<<error<<endl;
+		
+		if(error > 1000) {
+			motors(61, 48);
+			cout<<"Tilt right"<<endl;
+		}
+		else if(error < -1000)
+		{
+			motors(48, 61);
+			cout<<"Tilt left"<<endl;
+		}
+		else
+		{
+			motors(61, 61);
+			cout<<"STEADY"<<endl;
+		}
+		std::cout<<count<<std::endl;
+		count++;
+		sleep1(100);
+	}
+}
+
+void q3()
+{
+	cout<<"Quadrant 3 chosen"<<endl;
+	while(count < 500) {
+		
+	}
+}
+
+void q4()
+{
+	cout<<"Quadrant 4 chosen"<<endl;
+}
+
+void qChoose()
+{
+	cout<<"Choosing quadrant"<<endl;
+	q1();
+	//q2();
+}
+
+int main()
+{
+	int err;
+	cout<<"TESTING123"<<endl;
+	err = init(0);
+	cout<<"After init() error="<<err<<endl;
+	open_screen_stream();
+	qChoose();
+	return 0;
+}
