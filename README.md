@@ -2,6 +2,10 @@
 
 This project aims to develop an AVC robot capable of navigating all four-quadrants in VUW AVC Project obstacle course. The robot must complete various tasks in each quadrant, including opening gates, following lines, navigating mazes, and interacting with obstacles.
 
+| ![Robot created for the challenge](https://alexanderheffernan.github.io/static/media/AVCProject1.648da3cc0ff97deb84e1.jpeg) | ![Obstacle course for the challenge](https://alexanderheffernan.github.io/static/media/AVCProject7.f2b45c780cdfb31bd4d0.jpeg) |
+| -------------------------------- | ------------------------------ |
+
+
 ## Project Description
 
 The AVC robot project integrates electrical and software engineering disciplines to build a compact and efficient robot. The robot successfully navigates through the obstacle course, demonstrating its abilities in navigation, obstacle detection, and decision-making.
